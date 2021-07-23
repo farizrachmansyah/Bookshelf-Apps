@@ -20,11 +20,29 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  max-width: 1366px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 1200px) {
+  main {
+    flex-direction: row;
+    height: 100vh;
+    padding: 2rem;
+  }
+
+  main > * {
+    height: 100%;
+  }
 }
 
 /* UTILITIES */
 .wrapper {
   padding: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 1.5rem 3rem;
+  }
 }
 
 /* Form section */
@@ -32,26 +50,93 @@ main {
   display: flex;
   flex-direction: column;
 }
+#page-info > * {
+  margin-bottom: 2rem;
+}
+@media screen and (min-width: 1200px) {
+  #page-info {
+    justify-content: center;
+    padding: 2rem 4rem;
+  }
+
+  #page-info > * {
+    margin: 0;
+  }
+}
+@media screen and (min-width: 1366px) {
+  #page-info {
+    padding: 3rem;
+  }
+}
+@media screen and (min-width: 1440px) {
+  #page-info {
+    padding: 4rem;
+  }
+}
 
 /* header */
 header {
-  margin-bottom: 3rem;
+  border-radius: 0 0 20px 20px;
+  padding: 1rem;
+  background-color: var(--color-secondary);
+}
+@media screen and (min-width: 768px) {
+  header {
+    border-radius: 0 0 40px 40px;
+    padding: 1.25rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header {
+    background: none;
+    margin-bottom: auto !important;
+    padding: 0;
+  }
 }
 
 #logo {
   text-transform: uppercase;
   text-align: center;
   font-size: 1rem;
-  color: var(--color-secondary);
+  color: var(--color-light);
 }
 #logo > span {
   font-weight: 300;
 }
+@media screen and (min-width: 768px) {
+  #logo {
+    font-size: 1.25rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #logo {
+    color: var(--color-secondary);
+    text-align: left;
+  }
+}
 
 /* opening text */
 #opening {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   color: var(--color-dark);
+}
+@media screen and (min-width: 1200px) {
+  #opening {
+    margin-bottom: 2rem;
+    padding: 0;
+  }
+}
+@media screen and (min-width: 1440px) {
+  #opening {
+    margin-bottom: 3rem;
+    padding: 0;
+  }
+}
+@media screen and (min-width: 1920px) {
+  #opening {
+    margin-bottom: 4rem;
+    padding: 0;
+  }
 }
 
 #tagline {
@@ -59,15 +144,33 @@ header {
   text-transform: capitalize;
   font-size: 1.5rem;
 }
-
 #tagline-desc {
   font-size: 1rem;
   font-weight: 300;
 }
+@media screen and (min-width: 375px) {
+  #tagline {
+    font-size: 1.75rem;
+  }
+  #tagline-desc {
+    font-size: 1.125rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  #tagline {
+    font-size: 2rem;
+  }
+  #tagline-desc {
+    font-size: 1.25rem;
+  }
+}
 
 /* form content */
-#content {
-  margin-bottom: 1rem;
+@media screen and (min-width: 1200px) {
+  #content {
+    margin-bottom: auto;
+    padding: 0;
+  }
 }
 
 .form {
@@ -82,9 +185,13 @@ header {
 .form input[type="number"] {
   outline: none;
   border: none;
-  border-bottom: 1px solid var(--color-dark);
-  background-color: var(--color-accent);
+  border-bottom: 1px solid var(--color-secondary);
+  background-color: rgba(204, 142, 53, 0.175);
   color: var(--color-dark);
+}
+.form input[type="text"]::placeholder,
+.form input[type="number"]::placeholder {
+  color: var(--color-secondary);
 }
 .form input[type="submit"] {
   border: none;
@@ -93,6 +200,27 @@ header {
   font-weight: 700;
   background-color: var(--color-dark);
   color: var(--color-light);
+}
+@media screen and (min-width: 375px) {
+  .form input {
+    font-size: 1.125rem;
+  }
+
+  .form input[type="submit"] {
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .form {
+    max-width: unset;
+    margin: unset;
+  }
 }
 
 .form-item:not(:last-child) {
@@ -106,18 +234,43 @@ header {
 .form-align-right > input {
   margin-right: 0.5rem;
 }
+@media screen and (min-width: 375px) {
+  .form-align-right > * {
+    font-size: 1.125rem;
+  }
+}
 
 /* Book list section */
 #page-shelf {
   border-radius: 20px 20px 0 0;
   background-color: var(--color-primary);
 }
+@media screen and (min-width: 768px) {
+  #page-shelf {
+    border-radius: 40px 40px 0 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #page-shelf {
+    flex-grow: 1;
+    border-radius: 40px;
+    padding: 1.5rem;
+    overflow-y: scroll;
+  }
 
-/* completed list */
+  #page-shelf::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
 .book-list {
-  margin-top: 1rem;
   margin-bottom: 2rem;
   color: var(--color-dark);
+}
+@media screen and (min-width: 1200px) {
+  .book-list {
+    margin-bottom: 1rem;
+  }
 }
 
 .list-category {
@@ -126,13 +279,26 @@ header {
   font-size: 1rem;
   font-weight: 500;
 }
+@media screen and (min-width: 375px) {
+  .list-category {
+    font-size: 1.125rem;
+  }
+}
 
 .list-item {
   padding-left: 1rem;
 }
-
-.book-item {
-  margin-bottom: 1rem;
+@media screen and (min-width: 540px) {
+  .list-item {
+    padding: 0 1rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .list-item {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
+  }
 }
 
 .item-text {
@@ -150,6 +316,16 @@ header {
   font-size: 0.75rem;
   font-weight: 300;
 }
+@media screen and (min-width: 768px) {
+  .item-text {
+    padding: 1rem;
+  }
+
+  .item-text > h2 {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+  }
+}
 
 .item-option {
   padding: 0.75rem 0;
@@ -163,4 +339,13 @@ header {
 .item-option > button i {
   font-size: 1.25rem;
   color: var(--color-dark);
+}
+@media screen and (min-width: 768px) {
+  .item-option {
+    padding: 1rem 0;
+  }
+
+  .item-option > button {
+    margin-right: 1rem;
+  }
 }
