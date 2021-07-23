@@ -1,0 +1,166 @@
+:root {
+  --color-primary: #f7c50e;
+  --color-secondary: #cc8e35;
+  --color-accent: #ecf0f1;
+  --color-light: #ffffff;
+  --color-grey: #aaa69d;
+  --color-dark: #060d0d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* UTILITIES */
+.wrapper {
+  padding: 1rem;
+}
+
+/* Form section */
+#page-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+header {
+  margin-bottom: 3rem;
+}
+
+#logo {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-secondary);
+}
+#logo > span {
+  font-weight: 300;
+}
+
+/* opening text */
+#opening {
+  margin-bottom: 1.5rem;
+  color: var(--color-dark);
+}
+
+#tagline {
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+}
+
+#tagline-desc {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* form content */
+#content {
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form input {
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+.form input[type="text"],
+.form input[type="number"] {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--color-dark);
+  background-color: var(--color-accent);
+  color: var(--color-dark);
+}
+.form input[type="submit"] {
+  border: none;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: var(--color-dark);
+  color: var(--color-light);
+}
+
+.form-item:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.form-align-right {
+  margin-right: 1rem;
+  text-align: right;
+}
+.form-align-right > input {
+  margin-right: 0.5rem;
+}
+
+/* Book list section */
+#page-shelf {
+  border-radius: 20px 20px 0 0;
+  background-color: var(--color-primary);
+}
+
+/* completed list */
+.book-list {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: var(--color-dark);
+}
+
+.list-category {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.list-item {
+  padding-left: 1rem;
+}
+
+.book-item {
+  margin-bottom: 1rem;
+}
+
+.item-text {
+  border-radius: 10px;
+  padding: 0.75rem;
+  background-color: var(--color-accent);
+}
+.item-text > h2 {
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+.item-text > p {
+  text-transform: capitalize;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+.item-option {
+  padding: 0.75rem 0;
+  text-align: right;
+}
+.item-option > button {
+  margin-right: 0.75rem;
+  border: none;
+  background: none;
+}
+.item-option > button i {
+  font-size: 1.25rem;
+  color: var(--color-dark);
+}

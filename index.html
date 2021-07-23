@@ -8,6 +8,14 @@
 
     <link rel="stylesheet" href="./dist/css/main.css" />
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -18,58 +26,89 @@
     />
   </head>
   <body>
-    <header id="page-header">
-      <nav id="navbar">
-        <h1>bookshelf apps</h1>
-        <!-- Burger Menu -->
-        <div id="burger-btn">
-          <div class="burger-line"></div>
-          <div class="burger-line"></div>
-          <div class="burger-line"></div>
-        </div>
-      </nav>
+    <main>
+      <article id="page-info" class="wrapper">
+        <header>
+          <h1 id="logo"><span>book</span>shelf apps</h1>
+        </header>
 
-      <section id="bio">
-        <h2>your personal book saver assistant</h2>
-        <h3>save. stable. secure.</h3>
-      </section>
-    </header>
+        <section id="opening">
+          <h2 id="tagline">your personal<br />bookkeeper assistant</h2>
+          <p id="tagline-desc">Always deliver more than expected.</p>
+        </section>
 
-    <main id="page-main">
-      <form action="#" class="form" id="form">
-        <input type="text" placeholder="Title" />
-        <input type="text" placeholder="Author" />
-        <input type="number" placeholder="Year" />
-        <div class="form-group">
-          <label for="is-completed">selesai dibaca</label>
-          <input type="checkbox" id="is-completed" />
-        </div>
-        <input type="submit" value="ADD TO SHELF" />
-      </form>
+        <section id="content">
+          <form action="#" class="form" id="form">
+            <input class="form-item" type="text" name="title" id="book-title" placeholder="Title" required />
+            <input class="form-item" type="text" name="author" id="book-author" placeholder="Author" required />
+            <input class="form-item" type="number" name="year" id="book-year" placeholder="Year" required />
+            <div class="form-item form-align-right">
+              <input name="isCompleted" type="checkbox" id="is-completed" />
+              <label for="is-completed">Already read</label>
+            </div>
+            <input class="form-item" type="submit" value="ADD TO SHELF" />
+          </form>
+        </section>
+      </article>
 
-      <section id="recently-added">
-        <div class="container">
-          <h2>recently added</h2>
-          <div class="book-item" id="books">
-            <!-- Added item from js -->
-            <div class="item">
+      <article id="page-shelf" class="wrapper">
+        <section id="completed-list" class="book-list">
+          <h1 class="list-category">already read</h1>
+          <div id="completed-books" class="list-item">
+            <div class="book-item">
               <div class="item-text">
                 <h2>judul</h2>
                 <p>author: fariz</p>
                 <p>released: 2021</p>
               </div>
               <div class="item-option">
-                <button type="submit" class="option" id="move-shelf">
-                  <i class="fas fa-check-square"></i>
+                <button type="submit" title="Move to ..." class="option" id="move-shelf">
+                  <i class="fas fa-exchange-alt"></i>
                 </button>
-                <button type="submit" class="option" id="delete-book">
-                  <i class="fas fa-undo-alt"></i>
+                <button type="submit" title="Delete" class="option" id="delete-book">
+                  <i class="fas fa-trash-alt"></i>
                 </button>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section id="uncompleted-list" class="book-list">
+          <h1 class="list-category">unread</h1>
+          <div id="uncompleted-books" class="list-item">
+            <div class="book-item">
+              <div class="item-text">
+                <h2>judul</h2>
+                <p>author: fariz</p>
+                <p>released: 2021</p>
+              </div>
+              <div class="item-option">
+                <button type="submit" title="Move to ..." class="option" id="move-shelf">
+                  <i class="fas fa-exchange-alt"></i>
+                </button>
+                <button type="submit" title="Delete" class="option" id="delete-book">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+            <div class="book-item">
+              <div class="item-text">
+                <h2>judul</h2>
+                <p>author: fariz</p>
+                <p>released: 2021</p>
+              </div>
+              <div class="item-option">
+                <button type="submit" title="Move to ..." class="option" id="move-shelf">
+                  <i class="fas fa-exchange-alt"></i>
+                </button>
+                <button type="submit" title="Delete" class="option" id="delete-book">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
     </main>
   </body>
 </html>
