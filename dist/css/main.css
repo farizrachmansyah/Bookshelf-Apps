@@ -201,6 +201,9 @@ header {
   background-color: var(--color-dark);
   color: var(--color-light);
 }
+.form input[type="submit"]:focus {
+  outline: var(--color-primary);
+}
 @media screen and (min-width: 375px) {
   .form input {
     font-size: 1.125rem;
@@ -286,8 +289,9 @@ header {
 }
 
 .list-category {
-  border-bottom: 3px solid transparent;
+  border-bottom: 2px solid var(--color-dark);
   margin-bottom: 1rem;
+  padding: 0.25rem;
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: 500;
