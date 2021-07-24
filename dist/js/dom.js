@@ -16,8 +16,8 @@ function addToShelf() {
     // Proses pembuatan bukunya
     const theBook = createBook(bookTitle, bookAuthor, bookYear, isCompleted);
 
-    // INI MASIH SUKA ERROR
     readedBookList.append(theBook);
+    clearInputField();
     alert('Buku berhasil ditambahkan!');
   } else {
     const unreadedBookList = document.getElementById(UNREADED_LIST);
@@ -25,10 +25,22 @@ function addToShelf() {
     // Proses pembuatan bukunya
     const theBook = createBook(bookTitle, bookAuthor, bookYear, isCompleted);
 
-    // INI MASIH SUKA ERROR
     unreadedBookList.append(theBook);
+    clearInputField();
     alert('Buku berhasil ditambahkan!');
   }
+}
+
+function clearInputField() {
+  const bookTitle = document.getElementById('book-title')
+  const bookAuthor = document.getElementById('book-author')
+  const bookYear = document.getElementById('book-year')
+  const isCompleted = document.getElementById('is-completed');
+
+  bookTitle.value = '';
+  bookAuthor.value = '';
+  bookYear.value = '';
+  isCompleted.checked = false;
 }
 
 function createBook(title, author, year, completeStatus) {
