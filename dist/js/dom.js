@@ -9,23 +9,24 @@ function addToShelf() {
   const bookYear = document.getElementById('book-year').value;
   const isCompleted = document.getElementById('is-completed').checked;
 
-  // Proses pembuatan bukunya
-  const theBook = createBook(bookTitle, bookAuthor, bookYear, isCompleted);
-
   // Seleksi dia udah dibaca apa belum
   if(isCompleted) {
     const readedBookList = document.getElementById(READED_LIST);
 
+    // Proses pembuatan bukunya
+    const theBook = createBook(bookTitle, bookAuthor, bookYear, isCompleted);
+
     // INI MASIH SUKA ERROR
     readedBookList.append(theBook);
-
     alert('Buku berhasil ditambahkan!');
   } else {
     const unreadedBookList = document.getElementById(UNREADED_LIST);
 
+    // Proses pembuatan bukunya
+    const theBook = createBook(bookTitle, bookAuthor, bookYear, isCompleted);
+
     // INI MASIH SUKA ERROR
     unreadedBookList.append(theBook);
-
     alert('Buku berhasil ditambahkan!');
   }
 }
@@ -60,8 +61,6 @@ function createBook(title, author, year, completeStatus) {
   const bookItem = document.createElement('div');
   bookItem.classList.add('book-item');
   bookItem.append(itemText, itemOption);
-  console.log(bookItem);
-  console.log(itemOption);
 
   return bookItem;
 }
@@ -72,7 +71,7 @@ function createButton(titleText, event) {
   button.setAttribute('title', titleText);
   button.classList.add('option');
 
-  // Seleksi buat nentuin icon yang sesuai
+  // Seleksi buat nentuin icon yang sesuai antara move dan remove
   if(titleText == 'Remove book') {
     button.innerHTML = '<i class="fas fa-trash-alt"></i>';
   } else {
@@ -116,16 +115,15 @@ function createMoveButton(isCompleted) {
 
   if(isCompleted) {
     btnTitleAttribute = 'Move to unreaded';
-    return createButton(btnTitleAttribute, (e) => moveBookToUncompleted(e.target.parentElement.parentElement.parentElement));
+    return createButton(btnTitleAttribute, (e) => moveBookToUncompleted(e.target.parentElement.parentElement));
   } else {
     btnTitleAttribute = 'Move to readed';
-    return createButton(btnTitleAttribute, (e) => moveBookToCompleted(e.target.parentElement.parentElement.parentElement));
+    return createButton(btnTitleAttribute, (e) => moveBookToCompleted(e.target.parentElement.parentElement));
   }
 }
 
 // BUTTON REMOVE / DELETE
 function removeBook(bookElement) {
-  console.log(bookElement);
   const bookTitle = bookElement.querySelector('.item-text > h2').innerText;
 
   const deleteConfirm = confirm(`Hapus buku ${bookTitle}?`);
@@ -136,5 +134,5 @@ function removeBook(bookElement) {
 }
 
 function createTrashButton() {
-  return createButton('Remove book', (e) => removeBook(e.target.parentElement.parentElement.parentElement));
+  return createButton('Remove book', (e) => removeBook(e.target.parentElement.parentElement));
 }

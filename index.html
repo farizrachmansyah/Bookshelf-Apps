@@ -41,7 +41,16 @@
           <form action="#" class="form" id="form" autocomplete="off">
             <input class="form-item" type="text" name="title" id="book-title" placeholder="Title" required />
             <input class="form-item" type="text" name="author" id="book-author" placeholder="Author" required />
-            <input class="form-item" type="number" name="year" id="book-year" placeholder="Year" required />
+            <input
+              class="form-item"
+              type="number"
+              name="year"
+              id="book-year"
+              data-maxlength="4"
+              placeholder="Year"
+              oninput="this.value = this.value.slice(0,this.dataset.maxlength)"
+              required
+            />
             <div class="form-item form-align-right">
               <input name="isCompleted" type="checkbox" id="is-completed" />
               <label for="is-completed">Already read</label>
