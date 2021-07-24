@@ -252,14 +252,14 @@ header {
 }
 @media screen and (min-width: 1200px) {
   #page-shelf {
-    flex-grow: 1;
     border-radius: 40px;
+    flex-grow: 1;
+    display: flex;
+    gap: 1rem;
     padding: 1.5rem;
-    overflow-y: scroll;
   }
-
-  #page-shelf::-webkit-scrollbar {
-    width: 0;
+  #page-shelf > * {
+    flex: 1;
   }
 }
 
@@ -269,7 +269,19 @@ header {
 }
 @media screen and (min-width: 1200px) {
   .book-list {
+    position: relative;
     margin-bottom: 1rem;
+    overflow-y: scroll;
+  }
+
+  .book-list::-webkit-scrollbar {
+    width: 3px;
+  }
+  .book-list::-webkit-scrollbar-track {
+    background: var(--color-primary);
+  }
+  .book-list::-webkit-scrollbar-thumb {
+    background: var(--color-dark);
   }
 }
 
@@ -282,6 +294,15 @@ header {
 @media screen and (min-width: 375px) {
   .list-category {
     font-size: 1.125rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .list-category {
+    position: sticky;
+    top: 0;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    background-color: var(--color-primary);
   }
 }
 
@@ -332,9 +353,13 @@ header {
   text-align: right;
 }
 .item-option > button {
-  margin-right: 0.75rem;
-  border: none;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  border-radius: 4px;
   background: none;
+}
+.item-option > button:hover {
+  border: 2px solid var(--color-dark);
 }
 .item-option > button i {
   font-size: 1.25rem;
@@ -342,10 +367,6 @@ header {
 }
 @media screen and (min-width: 768px) {
   .item-option {
-    padding: 1rem 0;
-  }
-
-  .item-option > button {
-    margin-right: 1rem;
+    padding: 0.5rem 0;
   }
 }
