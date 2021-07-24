@@ -1,6 +1,7 @@
 // Bikin variable global yang nampung id dari element completed list dan uncompleted list
 const UNREADED_LIST = 'unreaded-books';
 const READED_LIST = 'readed-books';
+const BOOK_ITEMID = 'bookId';
 
 function addToShelf() {
   // Ambil data inputannya
@@ -15,8 +16,18 @@ function addToShelf() {
 
     // Proses pembuatan bukunya
     const theBook = createBook(bookTitle, bookAuthor, bookYear, isCompleted);
+    // Proses pembuatan objek bukunya
+    const theBookObject = createBookObject(bookTitle, bookAuthor, bookYear, isCompleted);
 
+    // Ambil id yang otomatis dibuatin dari function createBookObject. Abis itu bikin properti baru untuk theBook dan nilainya diisi dengan id yg tadi diambil
+    theBook[BOOK_ITEMID] = theBookObject.id;
+
+    // Masukin book object kedalem array biar jadi array of object alias JSON
+    books.push(theBookObject);
+
+    // Abis append masukin data ke storage, kosongin kotak nput, kasih info berhasil
     readedBookList.append(theBook);
+    updateData();
     clearInputField();
     alert('Buku berhasil ditambahkan!');
   } else {
@@ -24,8 +35,18 @@ function addToShelf() {
 
     // Proses pembuatan bukunya
     const theBook = createBook(bookTitle, bookAuthor, bookYear, isCompleted);
+    // Proses pembuatan objek bukunya
+    const theBookObject = createBookObject(bookTitle, bookAuthor, bookYear, isCompleted);
 
+    // Ambil id yang otomatis dibuatin dari function createBookObject. Abis itu bikin properti baru untuk theBook dan nilainya diisi dengan id yg tadi diambil
+    theBook[BOOK_ITEMID] = theBookObject.id;
+
+    // Masukin book object kedalem array biar jadi array of object alias JSON
+    books.push(theBookObject);
+
+    // Abis append masukin data ke storage, kosongin kotak nput, kasih info berhasil
     unreadedBookList.append(theBook);
+    updateData();
     clearInputField();
     alert('Buku berhasil ditambahkan!');
   }
@@ -103,9 +124,13 @@ function moveBookToUncompleted(bookElement) {
   const bookYear = bookElement.querySelector('#the-year > span').innerText;
 
   const newBook = createBook(bookTitle, bookAuthor, bookYear, false);
+  const book = findBook(bookElement[BOOK_ITEMID]);
+  book.isCompleted = false;
+  newBook[BOOK_ITEMID] = book.id;
 
   unreadedBookList.append(newBook);
   bookElement.remove();
+  updateData();
   alert('Buku berhasil dipindahkan!');
 }
 
@@ -116,9 +141,13 @@ function moveBookToCompleted(bookElement) {
   const bookYear = bookElement.querySelector('#the-year > span').innerText;
 
   const newBook = createBook(bookTitle, bookAuthor, bookYear, true);
+  const book = findBook(bookElement[BOOK_ITEMID]);
+  book.isCompleted = true;
+  newBook[BOOK_ITEMID] = book.id;
 
   readedBookList.append(newBook);
   bookElement.remove();
+  updateData();
   alert('Buku berhasil dipindahkan!');
 }
 
@@ -141,7 +170,13 @@ function removeBook(bookElement) {
   const deleteConfirm = confirm(`Hapus buku ${bookTitle}?`);
 
   if(deleteConfirm) {
+    // Cari datanya ada di posisi berapa di array, trus datanya dipotong dari array books alias diapus
+    const bookPosition = findBookIndex(bookElement[BOOK_ITEMID]);
+    books.splice(bookPosition, 1);
+
+
     bookElement.remove();
+    updateData();
   }
 }
 

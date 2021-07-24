@@ -291,21 +291,21 @@ header {
   }
 }
 
-.list-category {
+.category-name {
   border-bottom: 2px solid var(--color-dark);
   margin-bottom: 1rem;
   padding: 0.25rem;
   text-transform: uppercase;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 @media screen and (min-width: 375px) {
-  .list-category {
+  .category-name {
     font-size: 1.125rem;
   }
 }
 @media screen and (min-width: 1200px) {
-  .list-category {
+  .category-name {
     position: sticky;
     top: 0;
     padding: 0.75rem;

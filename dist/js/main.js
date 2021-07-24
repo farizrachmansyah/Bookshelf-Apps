@@ -5,4 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     addToShelf();
   });
+
+  if(isStorageExist()) {
+    loadData();
+    refreshDataFromStorage();
+  }
 })
+
+// document.addEventListener('ondataloaded', () => {
+// })
