@@ -194,15 +194,18 @@ header {
   color: var(--color-secondary);
 }
 .form input[type="submit"] {
+  outline: none;
   border: none;
   border-radius: 10px;
   font-size: 0.75rem;
   font-weight: 700;
   background-color: var(--color-dark);
   color: var(--color-light);
+  cursor: pointer;
 }
-.form input[type="submit"]:focus {
-  outline: var(--color-primary);
+.form input[type="submit"]:focus,
+.form input[type="submit"]:active {
+  outline: var(--color-secondary) solid 4px;
 }
 @media screen and (min-width: 375px) {
   .form input {
