@@ -23,6 +23,8 @@ function loadData() {
 
   if(realJSONData !== null)
     books = realJSONData;
+
+  document.dispatchEvent(new Event('ondataloaded'));
 }
 
 function updateData() {

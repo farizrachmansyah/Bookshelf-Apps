@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  if(isStorageExist()) {
+    loadData();
+    refreshDataFromStorage();
+  }
+
   const form = document.getElementById('form');
   const searchButton = document.querySelectorAll('.search-btn');
-  const searchField = document.querySelectorAll('.search-field');
+  const searchFieldUnreaded = document.getElementById('search-field-unreaded');
+  const searchFieldReaded = document.getElementById('search-field-readed');
+  let bookItemUnreaded = document.querySelectorAll('#unreaded-books > .book-item');
+  let bookItemReaded = document.querySelectorAll('#readed-books > .book-item');
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -28,33 +36,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // UBAH JADI SENDIRI2 SELECTORNYA
-  searchField.forEach(field => {
-    let bookContainer = field.parentElement.parentElement.nextElementSibling;
-    let bookItem = Array.from(bookContainer.getElementsByClassName('book-item'));
-    let bookTitle = [];
-    
-    bookItem.forEach(item => {
-      bookTitle.push(item.children[0].children[0]);
-    });
+  searchFieldUnreaded.addEventListener('input', () => {
+    let filterKey = searchFieldUnreaded.value.toLowerCase();
 
-    field.addEventListener('keyup', () => {
-      let filterKey = field.value.toLowerCase();
-
-      bookTitle.forEach((title, index) => {
-        if(title.textContent.indexOf(filterKey) > -1) {
-          bookItem[index].style.display = '';
-        } else {
-          bookItem[index].style.display = 'none';
-        }
-      })
+    bookItemUnreaded.forEach(item => {
+      let key = item.firstElementChild.firstElementChild.textContent;
+      
+      if(key.indexOf(filterKey) > -1) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
     });
   });
 
-  if(isStorageExist()) {
-    loadData();
-    refreshDataFromStorage();
-  }
+  searchFieldReaded.addEventListener('input', () => {
+    let filterKey = searchFieldReaded.value.toLowerCase();
+    
+    bookItemReaded.forEach(item => {
+      let key = item.firstElementChild.firstElementChild.textContent;
+      
+      if(key.indexOf(filterKey) > -1) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
 })
-
-// document.addEventListener('ondataloaded', () => {
-// })
